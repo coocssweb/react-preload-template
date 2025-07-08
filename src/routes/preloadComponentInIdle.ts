@@ -5,14 +5,18 @@ import routes from './routes'
  */
 const preloadComponentInIdle = (pathname: String) => {
   const factory = () => {
-    routes.find(r => r.path === pathname)?.component?.preload()
+    try {
+      routes.find(r => r.path === pathname)?.component?.preload()
+    } catch {}
   }
 
-  if ('requestIdleCallback' in window) {
-    ;(window as any).requestIdleCallback(() => factory())
-  } else {
-    setTimeout(factory, 1000)
-  }
+  try {
+    if ('requestIdleCallback' in window) {
+      ;(window as any).requestIdleCallback(() => factory())
+    } else {
+      setTimeout(factory, 1000)
+    }
+  } catch {}
 }
 
 export default preloadComponentInIdle
