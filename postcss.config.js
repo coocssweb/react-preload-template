@@ -3,7 +3,7 @@ module.exports = {
     'postcss-pxtorem': {
       rootValue: 200,
       propList: ['*']
-    }
-  },
-  tailwindcss: {}
+    },
+    '@tailwindcss/postcss': {}
+  }
 }
