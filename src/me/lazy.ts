@@ -1,7 +1,7 @@
 import lazyWithPreload from '@/routes/lazyWithPreload'
 
-const Me = lazyWithPreload(() => import('./me'))
-const Address = lazyWithPreload(() => import('./address'))
-const Settings = lazyWithPreload(() => import('./settings'))
+const Main = lazyWithPreload(() => import('./pages/main'))
+const Address = lazyWithPreload(() => import('./pages/address'))
+const Settings = lazyWithPreload(() => import('./pages/settings'))
 
-export { Me, Address, Settings }
+export { Main, Address, Settings }

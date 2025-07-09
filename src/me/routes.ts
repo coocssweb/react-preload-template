@@ -1,9 +1,9 @@
-import { Me, Settings, Address } from './lazy'
+import { Main, Settings, Address } from './lazy'
 
 const meRoutes = [
   {
     path: '/me',
-    component: Me,
+    component: Main,
     preload: ['/me/settings', '/me/address']
   },
   {

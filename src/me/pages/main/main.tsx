@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Me = () => {
+const Main = () => {
   return (
     <div>
       <h1>Me 页面</h1>
@@ -9,4 +9,4 @@ const Me = () => {
   )
 }
 
-export default Me
+export default Main
