@@ -1,9 +1,5 @@
-import lazyWithPreload from './lazyWithPreload'
-
 import Home from '../home'
-const Me = lazyWithPreload(() => import('../me'))
-const Settings = lazyWithPreload(() => import('../me/settings'))
-const Address = lazyWithPreload(() => import('../me/address'))
+import meRoutes from '@/me'
 
 interface RouteConfig {
   path: string
@@ -17,19 +13,7 @@ export const routes: RouteConfig[] = [
     component: Home,
     preload: ['/me']
   },
-  {
-    path: '/me',
-    component: Me,
-    preload: ['/me/settings', '/me/address']
-  },
-  {
-    path: '/me/settings',
-    component: Settings
-  },
-  {
-    path: '/me/address',
-    component: Address
-  }
+  ...meRoutes
 ]
 
 export default routes

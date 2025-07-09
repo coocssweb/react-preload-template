@@ -1,2 +1,2 @@
-import Me from './me'
-export default Me
+import meRoutes from './routes'
+export default meRoutes

@@ -35,7 +35,7 @@
     // paths:
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["*"],
       "@utils/*": ["utils/*"],
       "@utils": ["utils/index.ts"],
       "@routes/*": ["routes/*"],

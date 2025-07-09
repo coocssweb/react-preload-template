@@ -118,6 +118,7 @@ module.exports = function webpackCommonFunc(env) {
 
     resolve: {
       alias: {
+        '@/*': resolve('src/*'),
         '@utils': resolve('src/utils'),
         '@routes': resolve('src/routes')
       },
