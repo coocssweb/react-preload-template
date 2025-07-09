@@ -7,6 +7,8 @@ import {
   useLocation,
   Link
 } from 'react-router-dom'
+
+import '@/assets/styles/index.less'
 import { routes, useRoutePreloader } from './routes'
 
 const MyRoutes = () => {

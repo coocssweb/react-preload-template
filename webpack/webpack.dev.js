@@ -1,6 +1,7 @@
 /* Development build:
   ========================================================================== */
 const { merge } = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // default config
 const commonConfig = require('./webpack.common.js')('development')
@@ -29,9 +30,10 @@ module.exports = merge(commonConfig, {
     historyApiFallback: true
   },
   plugins: [
-    // react refresh example:
-    // https://github.com/pmmmwh/react-refresh-webpack-plugin
-    // new ReactRefreshWebpackPlugin()
+    new MiniCssExtractPlugin({
+      filename: `css/[name].css`,
+      chunkFilename: `css/[id].css`
+    })
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
