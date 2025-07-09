@@ -1,7 +1,13 @@
 import lazyWithPreload from '@/routes/lazyWithPreload'
 
-const Main = lazyWithPreload(() => import('./pages/main'))
-const Address = lazyWithPreload(() => import('./pages/address'))
-const Settings = lazyWithPreload(() => import('./pages/settings'))
+const Main = lazyWithPreload(
+  () => import(/* webpackChunkName: "MeMain" */ './pages/main')
+)
+const Address = lazyWithPreload(
+  () => import(/* webpackChunkName: "MeAddress" */ './pages/address')
+)
+const Settings = lazyWithPreload(
+  () => import(/* webpackChunkName: "MeSettings" */ './pages/settings')
+)
 
 export { Main, Address, Settings }

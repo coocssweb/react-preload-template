@@ -11,7 +11,7 @@ module.exports = merge(commonConfig, {
 
   // spin up a server for quick development
   devServer: {
-    compress: true,
+    compress: false,
     open: false,
     hot: true,
     port: 8084,

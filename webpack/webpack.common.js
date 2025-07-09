@@ -20,30 +20,6 @@ module.exports = function webpackCommonFunc(env) {
       chunkFilename: `js/${isDev ? '[name]' : '[name].[chunkhash:8]'}.js`
     },
 
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            chunks: 'all',
-            name: 'vendor',
-            minChunks: 1,
-            priority: 10
-          },
-          common: {
-            test: /[\\/]src[\\/]/,
-            chunks: 'all',
-            name: 'common',
-            minChunks: 3,
-            priority: 10
-          }
-        }
-      },
-      moduleIds: 'deterministic',
-      runtimeChunk: 'single',
-      chunkIds: 'deterministic'
-    },
-
     module: {
       rules: [
         // js(x) & ts(x)
@@ -109,10 +85,6 @@ module.exports = function webpackCommonFunc(env) {
         minify: {
           removeComments: true
         }
-      }),
-      new MiniCssExtractPlugin({
-        filename: isDev ? '[name].css' : `css/[name].[contenthash].css`,
-        chunkFilename: isDev ? '[id].css' : `css/[id].[contenthash:8].css`
       })
     ],
 
