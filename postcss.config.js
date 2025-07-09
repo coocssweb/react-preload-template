@@ -4,5 +4,6 @@ module.exports = {
       rootValue: 200,
       propList: ['*']
     }
-  }
+  },
+  tailwindcss: {}
 }
