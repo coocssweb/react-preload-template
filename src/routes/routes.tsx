@@ -1,5 +1,5 @@
-import Home from '../home'
-import meRoutes from '@/me'
+import Home from '@/features/home'
+import meRoutes from '@/features/me'
 
 // TODO:自动聚合
 // const modules = import.meta.glob('../*/routes.ts', { eager: true });
