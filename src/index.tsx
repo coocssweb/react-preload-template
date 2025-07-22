@@ -9,7 +9,8 @@ import {
 } from 'react-router-dom'
 import '@/assets/styles/index.less'
 import { routes, useRoutePreloader } from './routes'
-// import Layout from './layout'
+import Layout from './layout'
+import { SignIn, SignUp } from './features/sign'
 
 const MyRoutes = () => {
   const location = useLocation()

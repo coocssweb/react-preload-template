@@ -1,3 +1,4 @@
-import routes from './routes'
+import SignIn from './pages/signIn'
+import SignUp from './pages/signUp'
 
-export default routes
+export { SignIn, SignUp }
