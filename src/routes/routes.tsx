@@ -8,12 +8,14 @@ import meRoutes from '@/features/me'
 interface RouteConfig {
   path: string
   component: any
+  index?: boolean
   preload?: string[]
 }
 
 export const routes: RouteConfig[] = [
   {
     path: '/',
+    index: true,
     component: Home,
     preload: ['/me']
   },

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import {
   SidebarProvider,
   SidebarTrigger,
@@ -8,7 +9,7 @@ import AppSidebarHeader from './sidebarHeader'
 import AppSidebarContent from './sidebarContent'
 import AppSidebarFooter from './sidebarFooter'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = () => {
   const [user, setUser] = useState({
     avatar: '',
     name: 'wangjiaxin',
@@ -23,7 +24,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </Sidebar>
       <main>
         <SidebarTrigger />
-        {children}
+        <Outlet></Outlet>
       </main>
     </SidebarProvider>
   )

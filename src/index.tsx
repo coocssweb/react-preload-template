@@ -18,13 +18,18 @@ const MyRoutes = () => {
 
   return (
     <Routes location={location}>
-      {routes.map(route => (
-        <Route
-          key={route.path}
-          path={route.path}
-          element={<route.component />}
-        ></Route>
-      ))}
+      <Route path="/sign/signin" element={<SignIn />}></Route>
+      <Route path="/sign/signup" element={<SignUp />}></Route>
+      <Route path="/" element={<Layout />}>
+        {routes.map(route => (
+          <Route
+            index={route.index || false}
+            key={route.path}
+            path={route.path}
+            element={<route.component />}
+          ></Route>
+        ))}
+      </Route>
     </Routes>
   )
 }
