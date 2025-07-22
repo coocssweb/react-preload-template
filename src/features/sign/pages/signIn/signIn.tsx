@@ -60,7 +60,7 @@ const SignIn = () => {
   }, [])
 
   return (
-    <div className="bg-primary-foreground container grid h-svh max-w-none items-center justify-center">
+    <div className="bg-primary-foreground container grid h-svh items-center justify-center">
       <div className="mx-auto flex w-full flex-col justify-center space-y-2 py-8 sm:w-[480px] sm:p-8">
         <div className="mb-4 flex items-center justify-center">
           <svg
@@ -85,6 +85,7 @@ const SignIn = () => {
               log into your account
             </CardDescription>
           </CardHeader>
+
           <CardContent>
             <Form {...form}>
               <form
@@ -140,6 +141,7 @@ const SignIn = () => {
               </form>
             </Form>
           </CardContent>
+
           <CardFooter>
             <p className="text-muted-foreground px-8 text-center text-sm">
               By clicking login, you agree to our{' '}
