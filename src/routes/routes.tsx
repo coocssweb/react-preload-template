@@ -1,5 +1,6 @@
 import Home from '@/features/home'
 import meRoutes from '@/features/me'
+import signRoutes from '@/features/sign'
 
 // TODO:自动聚合
 // const modules = import.meta.glob('../*/routes.ts', { eager: true });
@@ -17,7 +18,8 @@ export const routes: RouteConfig[] = [
     component: Home,
     preload: ['/me']
   },
-  ...meRoutes
+  ...meRoutes,
+  ...signRoutes
 ]
 
 export default routes

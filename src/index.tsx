@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom'
 import '@/assets/styles/index.less'
 import { routes, useRoutePreloader } from './routes'
-import Layout from './layout'
+// import Layout from './layout'
 
 const MyRoutes = () => {
   const location = useLocation()
@@ -31,13 +31,6 @@ const MyRoutes = () => {
 const root = createRoot(document.getElementById('app')!)
 root.render(
   <Router>
-    <Layout>
-      <nav style={{ marginBottom: 20 }}>
-        <Link to="/">Home</Link> | <Link to="/me">Me</Link> |{' '}
-        <Link to="/me/settings">MeSettings</Link> |{' '}
-        <Link to="/me/address">MeAddress</Link>
-      </nav>
-    </Layout>
     <MyRoutes />
   </Router>
 )
