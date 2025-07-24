@@ -22,8 +22,8 @@ module.exports = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)'
@@ -67,6 +67,12 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
+      },
+      boxShadow: {
+        DEFAULT: '0px 8px 24px 0px rgba(var(--shadow-color), 0.16)',
+        sm: '0px 2px 4px 0px rgba(var(--shadow-color), 0.08)',
+        md: '0px 8px 24px 0px rgba(var(--shadow-color), 0.16)',
+        lg: '0px 16px 48px 0px rgba(var(--shadow-color), 0.24)'
       },
       keyframes: {
         'accordion-down': {

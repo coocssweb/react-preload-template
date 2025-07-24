@@ -8,7 +8,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
@@ -23,6 +22,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
+// 表单校验规则，使用 zod 定义邮箱和密码的校验逻辑
 const formSchema = z.object({
   email: z
     .string()
@@ -41,6 +41,7 @@ const formSchema = z.object({
 const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false)
 
+  // 初始化表单，设置校验器和默认值
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -50,7 +51,7 @@ const SignIn = () => {
   })
 
   /**
-   * 提交
+   * 提交表单时触发，模拟登录请求
    */
   const onSubmit = useCallback((data: z.infer<typeof formSchema>) => {
     setIsLoading(true)
@@ -60,26 +61,31 @@ const SignIn = () => {
   }, [])
 
   return (
-    <div className="bg-primary-foreground container grid h-svh items-center justify-center">
+    <div className="container grid h-svh items-center justify-center">
       <div className="mx-auto flex w-full flex-col justify-center space-y-2 py-8 sm:w-[480px] sm:p-8">
-        <Card className="gap-4">
+        {/* 登录卡片 */}
+        <Card className="gap-4 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-lg tracking-tight">登录</CardTitle>
+            <CardTitle className="text-2xl tracking-tight">登录</CardTitle>
             <CardDescription>请输入您的账户信息。</CardDescription>
           </CardHeader>
 
           <CardContent>
-            <Form {...form}>
+            {/* 表单组件，集成 react-hook-form */}
+            <Form  {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className={cn('grid gap-3')}
+                className={cn('grid gap-5')}
               >
+                {/* 邮箱输入项 */}
                 <FormField
                   control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>邮箱或账户名</FormLabel>
+                      <FormLabel className="text-sm font-bold">
+                        邮箱或账户名
+                      </FormLabel>
                       <FormControl>
                         <Input placeholder="name@example.com" {...field} />
                       </FormControl>
@@ -87,12 +93,14 @@ const SignIn = () => {
                     </FormItem>
                   )}
                 />
+
+                {/* 密码输入项 */}
                 <FormField
                   control={form.control}
                   name="password"
                   render={({ field }) => (
-                    <FormItem className="relative">
-                      <FormLabel>密码</FormLabel>
+                    <FormItem>
+                      <FormLabel className="text-sm font-bold">密码</FormLabel>
                       <FormControl>
                         <Input placeholder="********" {...field} />
                       </FormControl>
@@ -101,23 +109,36 @@ const SignIn = () => {
                   )}
                 />
 
+                {/* 登录按钮，加载时禁用 */}
                 <Button className="mt-2" size="lg" disabled={isLoading}>
                   登录
                 </Button>
-
-                <div className="relative my-2">
-                  <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t" />
+               
+                {/* 辅助链接和分割线 */}
+                <div className='flex flex-col items-center  justify-center'>
+                  <div>
+                  <span className='text-sm text-muted-foreground'>首次使用 Proton？</span>
+                  <Link to="/sign/signUp" className='text-sm text-primary underline hover:no-underline'>请创建账户。</Link>
                   </div>
+
+                  <div className="relative my-2 w-full">
+                    <div className="absolute inset-0 flex items-center">
+                      <span className="w-full border-t" />
+                    </div>
+                  </div>
+                
+                  <Link to="" className='text-sm text-primary underline hover:no-underline'>登录遇到问题？</Link>
                 </div>
               </form>
             </Form>
           </CardContent>
 
-          <CardFooter>
-            <Link to="">登录遇到问题？</Link>
-          </CardFooter>
         </Card>
+
+        {/* 主题切换按钮，切换暗黑/明亮模式 */}
+        <Button onClick={() => {
+          document.documentElement.classList.toggle('dark')
+        }}>切换主题</Button>
       </div>
     </div>
   )
