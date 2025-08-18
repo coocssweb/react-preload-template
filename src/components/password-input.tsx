@@ -1,5 +1,6 @@
 import React, { forwardRef, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { Eye, EyeClosed } from 'lucide-react'
 import { Button } from './ui/button'
 
 type PasswordInputProps = Omit<
@@ -26,7 +27,9 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           disabled={disabled}
           className="text-muted-foreground absolute top-1/2 right-1 h-6 w-6 -translate-y-1/2 rounded-md"
           onClick={() => setShowPassword(prev => !prev)}
-        ></Button>
+        >
+          {showPassword ? <Eye size={18} /> : <EyeClosed size={18} />}
+        </Button>
       </div>
     )
   }

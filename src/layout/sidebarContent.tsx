@@ -1,5 +1,5 @@
 import React from 'react'
-import {  NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Calendar, Home, Inbox, Search } from 'lucide-react'
 import {
   SidebarContent,
@@ -41,17 +41,23 @@ const AppSidebarContent = () => {
         <SidebarGroupLabel>账户</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
-            {items.map(item => ( <SidebarMenuItem key={item.title}>
+            {items.map(item => (
+              <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <NavLink to={item.url} className={({isActive}) => {
-                    console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', isActive)
-                    return isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
-                  }} >
+                  <NavLink
+                    to={item.url}
+                    className={({ isActive }) => {
+                      return isActive
+                        ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                        : ''
+                    }}
+                  >
                     <item.icon className="text-sidebar-icon" />
                     <span>{item.title}</span>
                   </NavLink>
                 </SidebarMenuButton>
-              </SidebarMenuItem>))}
+              </SidebarMenuItem>
+            ))}
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>

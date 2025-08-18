@@ -2,6 +2,7 @@
   ========================================================================== */
 const { merge } = require('webpack-merge')
 const { resolve } = require('./utils')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // plugins for production build only:
 const JsonMinimizerPlugin = require('json-minimizer-webpack-plugin')
@@ -11,6 +12,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // default config
 const commonConfig = require('./webpack.common.js')('production')
+
+// 检查是否启用分析
+const isAnalyze = process.argv.includes('--analyze')
 
 module.exports = merge(commonConfig, {
   mode: 'production',
@@ -22,7 +26,14 @@ module.exports = merge(commonConfig, {
     new MiniCssExtractPlugin({
       filename: `css/[name].[contenthash].css`,
       chunkFilename: `css/[id].[contenthash:8].css`
-    })
+    }),
+    ...(isAnalyze ? [
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'server',
+        openAnalyzer: true,
+        reportFilename: 'bundle-report.html'
+      })
+    ] : [])
   ],
   module: {
     rules: []
