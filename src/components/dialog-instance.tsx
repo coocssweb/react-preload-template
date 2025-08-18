@@ -1,5 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { useTranslation } from 'react-i18next'
 import {
   Dialog,
   DialogContent,
@@ -52,12 +53,12 @@ class DialogInstance {
    */
   confirm(options: ConfirmOptions = {}) {
     const {
-      title = '确认',
+      title,
       content = '',
       onConfirm,
       onCancel,
-      confirmText = '确定',
-      cancelText = '取消'
+      confirmText,
+      cancelText
     } = options
 
     this.createContainer()
@@ -72,22 +73,25 @@ class DialogInstance {
       this.destroyContainer()
     }
 
-    const ConfirmDialog = () => (
-      <Dialog open={true}>
-        <DialogContent showClose={false} className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
-            <DialogDescription>{content}</DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button variant="outline" onClick={handleCancel}>
-              {cancelText}
-            </Button>
-            <Button onClick={handleConfirm}>{confirmText}</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    )
+    const ConfirmDialog = () => {
+      const { t } = useTranslation('dialog')
+      return (
+        <Dialog open={true}>
+          <DialogContent showClose={false} className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>{title || t('confirm')}</DialogTitle>
+              <DialogDescription>{content}</DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button variant="outline" onClick={handleCancel}>
+                {cancelText || t('cancelText')}
+              </Button>
+              <Button onClick={handleConfirm}>{confirmText || t('confirmText')}</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )
+    }
 
     this.root.render(<ConfirmDialog />)
   }
@@ -97,10 +101,10 @@ class DialogInstance {
    */
   alert(options: AlertOptions = {}) {
     const {
-      title = '提示',
+      title,
       content = '',
       onConfirm,
-      confirmText = '确定'
+      confirmText
     } = options
 
     this.createContainer()
@@ -110,19 +114,22 @@ class DialogInstance {
       this.destroyContainer()
     }
 
-    const AlertDialog = () => (
-      <Dialog open={true}>
-        <DialogContent showClose={false} className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
-            <DialogDescription>{content}</DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button onClick={handleConfirm}>{confirmText}</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    )
+    const AlertDialog = () => {
+      const { t } = useTranslation('dialog')
+      return (
+        <Dialog open={true}>
+          <DialogContent showClose={false} className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>{title || t('alert')}</DialogTitle>
+              <DialogDescription>{content}</DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button onClick={handleConfirm}>{confirmText || t('confirmText')}</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )
+    }
 
     this.root.render(<AlertDialog />)
   }

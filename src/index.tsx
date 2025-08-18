@@ -11,6 +11,7 @@ import { routes, useRoutePreloader } from './routes'
 import Layout from './layout'
 import { SignIn, SignUp } from './features/sign'
 import { useTheme } from '@/hooks'
+import './i18next'
 
 const MyRoutes = () => {
   const location = useLocation()
