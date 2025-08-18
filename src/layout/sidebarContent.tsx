@@ -1,5 +1,6 @@
 import React from 'react'
-import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react'
+import {  NavLink } from 'react-router-dom'
+import { Calendar, Home, Inbox, Search } from 'lucide-react'
 import {
   SidebarContent,
   SidebarGroup,
@@ -13,66 +14,44 @@ import {
 const AppSidebarContent = () => {
   const items = [
     {
-      title: 'Home',
-      url: '#',
+      title: '收件箱',
+      url: '/',
       icon: Home
     },
     {
-      title: 'Inbox',
-      url: '#',
+      title: '草稿',
+      url: '/draft',
       icon: Inbox
     },
     {
-      title: 'Calendar',
-      url: '#',
+      title: '已发送',
+      url: '/sent',
       icon: Calendar
     },
     {
-      title: 'Search',
-      url: '#',
+      title: '星标邮件',
+      url: '/starred',
       icon: Search
-    },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings
     }
   ]
 
   return (
     <SidebarContent>
       <SidebarGroup>
-        <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroupLabel>账户</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
-            {items.map(item => (
-              <SidebarMenuItem key={item.title}>
+            {items.map(item => ( <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url}>
-                    <item.icon />
+                  <NavLink to={item.url} className={({isActive}) => {
+                    console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', isActive)
+                    return isActive ? 'bg-sidebar-accent text-sidebar-accent-foreground' : ''
+                  }} >
+                    <item.icon className="text-sidebar-icon" />
                     <span>{item.title}</span>
-                  </a>
+                  </NavLink>
                 </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
-        </SidebarGroupContent>
-      </SidebarGroup>
-
-      <SidebarGroup>
-        <SidebarGroupLabel>Application</SidebarGroupLabel>
-        <SidebarGroupContent>
-          <SidebarMenu>
-            {items.map(item => (
-              <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild>
-                  <a href={item.url}>
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
+              </SidebarMenuItem>))}
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>

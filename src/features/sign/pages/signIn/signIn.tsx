@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { PasswordInput } from '@/components/password-input'
 
 // 表单校验规则，使用 zod 定义邮箱和密码的校验逻辑
 const formSchema = z.object({
@@ -39,6 +40,7 @@ const formSchema = z.object({
 })
 
 const SignIn = () => {
+  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
   // 初始化表单，设置校验器和默认值
@@ -54,10 +56,7 @@ const SignIn = () => {
    * 提交表单时触发，模拟登录请求
    */
   const onSubmit = useCallback((data: z.infer<typeof formSchema>) => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
+    navigate('/')
   }, [])
 
   return (
@@ -72,7 +71,7 @@ const SignIn = () => {
 
           <CardContent>
             {/* 表单组件，集成 react-hook-form */}
-            <Form  {...form}>
+            <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className={cn('grid gap-5')}
@@ -102,7 +101,7 @@ const SignIn = () => {
                     <FormItem>
                       <FormLabel className="text-sm font-bold">密码</FormLabel>
                       <FormControl>
-                        <Input placeholder="********" {...field} />
+                        <PasswordInput placeholder="********" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -113,12 +112,20 @@ const SignIn = () => {
                 <Button className="mt-2" size="lg" disabled={isLoading}>
                   登录
                 </Button>
-               
+
                 {/* 辅助链接和分割线 */}
-                <div className='flex flex-col items-center  justify-center'>
+                <div className="flex flex-col items-center  justify-center">
                   <div>
-                  <span className='text-sm text-muted-foreground'>首次使用 Proton？</span>
-                  <Link to="/sign/signUp" className='text-sm text-primary underline hover:no-underline'>请创建账户。</Link>
+                    <span className="text-sm text-muted-foreground">
+                      首次使用 Proton？
+                    </span>
+                    <Link
+                      to="/sign/signUp"
+                      className="text-sm text-primary underline hover:no-underline"
+                    >
+                      请创建账户
+                    </Link>
+                    <span>。</span>
                   </div>
 
                   <div className="relative my-2 w-full">
@@ -126,19 +133,18 @@ const SignIn = () => {
                       <span className="w-full border-t" />
                     </div>
                   </div>
-                
-                  <Link to="" className='text-sm text-primary underline hover:no-underline'>登录遇到问题？</Link>
+
+                  <Link
+                    to=""
+                    className="text-sm text-primary underline hover:no-underline"
+                  >
+                    登录遇到问题？
+                  </Link>
                 </div>
               </form>
             </Form>
           </CardContent>
-
         </Card>
-
-        {/* 主题切换按钮，切换暗黑/明亮模式 */}
-        <Button onClick={() => {
-          document.documentElement.classList.toggle('dark')
-        }}>切换主题</Button>
       </div>
     </div>
   )
