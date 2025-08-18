@@ -47,10 +47,13 @@ class DialogInstance {
     }
   }
 
+  /**
+   * confirm 确认框
+   */
   confirm(options: ConfirmOptions = {}) {
     const {
       title = '确认',
-      content = '确定要执行此操作吗？',
+      content = '',
       onConfirm,
       onCancel,
       confirmText = '确定',
@@ -89,6 +92,9 @@ class DialogInstance {
     this.root.render(<ConfirmDialog />)
   }
 
+  /**
+   * alert 提示框
+   */
   alert(options: AlertOptions = {}) {
     const {
       title = '提示',
