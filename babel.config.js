@@ -40,9 +40,17 @@ const sharedPlugins = [
 
 function makePresets(moduleValue) {
   return [
-    '@babel/preset-env',
+    [
+      '@babel/preset-env',
+      {
+        modules: moduleValue,
+        targets: {
+          browsers: ['> 1%', 'last 2 versions', 'not ie <= 8']
+        }
+      }
+    ],
     '@babel/preset-typescript',
-    ['@babel/preset-react', { modules: moduleValue }]
+    ['@babel/preset-react', { runtime: 'automatic' }]
   ]
 }
 
