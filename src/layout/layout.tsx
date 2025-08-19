@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import {
   SidebarProvider,
-  SidebarTrigger,
+  // SidebarTrigger,
   Sidebar
 } from '@/components/ui/sidebar'
 import AppSidebarHeader from './sidebarHeader'
@@ -22,8 +22,7 @@ const Layout = () => {
         <AppSidebarContent></AppSidebarContent>
         <AppSidebarFooter user={user}></AppSidebarFooter>
       </Sidebar>
-      <main>
-        <SidebarTrigger />
+      <main className="w-full max-w-full p-4">
         <Outlet></Outlet>
       </main>
     </SidebarProvider>

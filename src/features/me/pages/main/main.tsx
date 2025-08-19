@@ -1,10 +1,28 @@
 import React from 'react'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card'
 
 const Main = () => {
   return (
     <div>
-      <h1>Me 页面</h1>
-      <p>这里是个人页内容。</p>
+      <h1 className="text-2xl font-bold mb-4">您的信息</h1>
+      <Card className="w-full rounded-md shadow-sm">
+        <CardHeader>
+          <CardTitle>个人资料信息</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <CardDescription>这里是个人资料信息。</CardDescription>
+        </CardContent>
+        <CardFooter>
+          <CardDescription>这里是个人资料信息。</CardDescription>
+        </CardFooter>
+      </Card>
     </div>
   )
 }
