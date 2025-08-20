@@ -56,7 +56,7 @@ const SignIn = () => {
    * 提交表单时触发，模拟登录请求
    */
   const onSubmit = useCallback((data: z.infer<typeof formSchema>) => {
-    navigate('/')
+    // navigate('/')
   }, [])
 
   return (

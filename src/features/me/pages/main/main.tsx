@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {
   Card,
   CardContent,
@@ -9,6 +9,7 @@ import {
   ConfirmDialog
 } from '@/components'
 import { cn } from '@/lib/utils'
+import NameEditor from './name-editor'
 
 const InformationLine = ({
   label,
@@ -35,7 +36,7 @@ const InformationLine = ({
 }
 
 const Main = () => {
-  const [nameDialogOpen, setNameDialogOpen] = React.useState(false)
+  const nameEditorRef = useRef(null)
 
   return (
     <>
@@ -78,7 +79,7 @@ const Main = () => {
                 size="sm"
                 className="p-0 h-auto"
                 onClick={() => {
-                  setNameDialogOpen(true)
+                  nameEditorRef.current.onOpen()
                 }}
               >
                 编辑姓名
@@ -114,15 +115,7 @@ const Main = () => {
         </Card>
       </div>
 
-      <ConfirmDialog
-        open={nameDialogOpen}
-        title="编辑名称"
-        confirmText="保存"
-        cancelText="取消"
-        onOpenChange={v => {
-          setNameDialogOpen(v)
-        }}
-      ></ConfirmDialog>
+      <NameEditor ref={nameEditorRef}></NameEditor>
     </>
   )
 }

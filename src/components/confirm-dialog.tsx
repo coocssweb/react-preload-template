@@ -15,31 +15,45 @@ interface ConfirmDialogProps {
   open: boolean
   title?: string
   description?: string
-  content?: React.ReactNode
   showClose?: boolean
+  closableOnOverlay?: boolean
   cancelText?: string
   confirmText?: string
+  confirmDisable?: boolean
   onCancel?: () => void
   onConfirm?: () => void
   onOpenChange?: (open: boolean) => void
+  children?: React.ReactNode
 }
 
 const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   open,
   title,
   description,
-  content,
   showClose = false,
+  closableOnOverlay = false,
   cancelText,
   confirmText,
+  confirmDisable = false,
   onCancel,
   onConfirm,
-  onOpenChange
+  onOpenChange,
+  children
 }) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogPortal>
-        <DialogContent className="sm:max-w-[425px]" showClose={showClose}>
+        <DialogContent
+          className="sm:max-w-[425px]"
+          showClose={showClose}
+          onPointerDownOutside={
+            closableOnOverlay
+              ? undefined
+              : e => {
+                  e.preventDefault()
+                }
+          }
+        >
           {title || description ? (
             <DialogHeader>
               {title ? <DialogTitle>{title}</DialogTitle> : null}
@@ -49,7 +63,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
             </DialogHeader>
           ) : null}
 
-          {content}
+          {children}
 
           {cancelText || confirmText ? (
             <DialogFooter>
@@ -62,7 +76,11 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
               ) : null}
 
               {confirmText ? (
-                <Button type="submit" onClick={onConfirm}>
+                <Button
+                  type="submit"
+                  onClick={onConfirm}
+                  disabled={confirmDisable}
+                >
                   {confirmText}
                 </Button>
               ) : null}
