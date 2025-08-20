@@ -82,7 +82,7 @@ module.exports = {
         sm: 'calc(var(--radius) - 12px)'
       },
       boxShadow: {
-        DEFAULT: '0px 8px 24px 0px rgba(var(--shadow-color), 0.16)',
+        DEFAULT: '0px 4px 8px 0px rgba(var(--shadow-color), 0.16)',
         sm: '0px 2px 4px 0px rgba(var(--shadow-color), 0.08)',
         md: '0px 8px 24px 0px rgba(var(--shadow-color), 0.16)',
         lg: '0px 16px 48px 0px rgba(var(--shadow-color), 0.24)'
