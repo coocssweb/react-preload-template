@@ -1,4 +1,4 @@
-import SignIn from './pages/signIn'
-import SignUp from './pages/signUp'
+import SignIn from './pages/sign-in'
+import SignUp from './pages/sign-up'
 
 export { SignIn, SignUp }

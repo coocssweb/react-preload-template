@@ -63,6 +63,7 @@ const NameEditor = React.forwardRef<NameEditorRef>((_, ref) => {
         form.handleSubmit(onSubmit)()
       }}
     >
+      <div className="h-2"></div>
       <Form {...form}>
         {/* 邮箱输入项 */}
         <FormField
@@ -78,6 +79,7 @@ const NameEditor = React.forwardRef<NameEditorRef>((_, ref) => {
           )}
         />
       </Form>
+      <div className="h-2"></div>
     </ConfirmDialog>
   )
 })
