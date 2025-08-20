@@ -73,7 +73,14 @@ const Main = () => {
               <dd className="text-sm/6 text-gray-700 font-bold flex-1">
                 王佳欣
               </dd>
-              <Button variant="link" size="sm" className="p-0 h-auto">
+              <Button
+                variant="link"
+                size="sm"
+                className="p-0 h-auto"
+                onClick={() => {
+                  setNameDialogOpen(true)
+                }}
+              >
                 编辑姓名
               </Button>
             </div>
@@ -107,7 +114,15 @@ const Main = () => {
         </Card>
       </div>
 
-      <ConfirmDialog open={nameDialogOpen}></ConfirmDialog>
+      <ConfirmDialog
+        open={nameDialogOpen}
+        title="编辑名称"
+        confirmText="保存"
+        cancelText="取消"
+        onOpenChange={v => {
+          setNameDialogOpen(v)
+        }}
+      ></ConfirmDialog>
     </>
   )
 }

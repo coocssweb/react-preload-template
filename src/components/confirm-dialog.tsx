@@ -16,6 +16,7 @@ interface ConfirmDialogProps {
   title?: string
   description?: string
   content?: React.ReactNode
+  showClose?: boolean
   cancelText?: string
   confirmText?: string
   onCancel?: () => void
@@ -28,6 +29,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   title,
   description,
   content,
+  showClose = false,
   cancelText,
   confirmText,
   onCancel,
@@ -37,7 +39,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogPortal>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px]" showClose={showClose}>
           {title || description ? (
             <DialogHeader>
               {title ? <DialogTitle>{title}</DialogTitle> : null}
